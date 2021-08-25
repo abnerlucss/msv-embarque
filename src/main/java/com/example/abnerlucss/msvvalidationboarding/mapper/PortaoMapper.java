@@ -24,6 +24,7 @@ public class PortaoMapper {
 
     public Portao converteDTOParaEntidade(PortaoDTO portaoDTO) {
         return new Portao(
+                portaoDTO.getIdPortao(),
                 portaoDTO.getNumero(),
                 portaoDTO.getApelido(),
                 portaoDTO.getStatus()

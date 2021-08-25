@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,11 +20,8 @@ public class Embarque {
     @Column(name = "id_embarque")
     private Integer idEmbarque;
 
-    @Column(name = "data_embarque")
-    private Date dataEmbarque;
-
-    @Column(name = "hora_embarque")
-    private Date horaEmbarque;
+    @Column(name = "data_hora_embarque")
+    private LocalDateTime dataHoraEmbarque;
 
     @Column(name = "classe")
     private String classe;
@@ -46,9 +43,8 @@ public class Embarque {
     private String destino;
 
 
-    public Embarque(Date dataEmbarque, Date horaEmbarque, String classe, String codigoLocalizador, String identificadorComp, Integer numeroAssento, String destino) {
-        this.dataEmbarque = dataEmbarque;
-        this.horaEmbarque = horaEmbarque;
+    public Embarque(LocalDateTime dataHoraEmbarque, String classe, String codigoLocalizador, String identificadorComp, Integer numeroAssento, String destino) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
         this.classe = classe;
         this.codigoLocalizador = codigoLocalizador;
         this.identificadorComp = identificadorComp;
@@ -56,9 +52,8 @@ public class Embarque {
         this.destino = destino;
     }
 
-    public Embarque(Date dataEmbarque, Date horaEmbarque, String classe, String codigoLocalizador, String identificadorComp, Integer numeroAssento, Voo voo, String destino) {
-        this.dataEmbarque = dataEmbarque;
-        this.horaEmbarque = horaEmbarque;
+    public Embarque(LocalDateTime dataHoraEmbarque, String classe, String codigoLocalizador, String identificadorComp, Integer numeroAssento, Voo voo, String destino) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
         this.classe = classe;
         this.codigoLocalizador = codigoLocalizador;
         this.identificadorComp = identificadorComp;
@@ -67,18 +62,4 @@ public class Embarque {
         this.destino = destino;
     }
 
-    @Override
-    public String toString() {
-        return "Embarque{" +
-                "idEmbarque=" + idEmbarque +
-                ", dataEmbarque=" + dataEmbarque +
-                ", horaEmbarque=" + horaEmbarque +
-                ", classe='" + classe + '\'' +
-                ", codigoLocalizador='" + codigoLocalizador + '\'' +
-                ", identificadorComp='" + identificadorComp + '\'' +
-                ", numeroAssento=" + numeroAssento +
-                ", voo=" + voo +
-                ", destino='" + destino + '\'' +
-                '}';
-    }
 }

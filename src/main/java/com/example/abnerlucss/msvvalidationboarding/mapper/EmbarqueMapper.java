@@ -10,8 +10,7 @@ public class EmbarqueMapper {
 
     public Embarque converteDTOParaEntidade(EmbarqueDTO embarqueDTO, Voo voo) {
         return new Embarque(
-                embarqueDTO.getDataEmbarque(),
-                embarqueDTO.getHoraEmbarque(),
+                embarqueDTO.getDataHoraEmbarque(),
                 embarqueDTO.getClasse(),
                 embarqueDTO.getCodigoLocalizador(),
                 embarqueDTO.getIdentificadorComp(),

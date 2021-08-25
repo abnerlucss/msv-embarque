@@ -1,9 +1,6 @@
 package com.example.abnerlucss.msvvalidationboarding.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "portao")
 public class Portao {
 
@@ -29,19 +27,4 @@ public class Portao {
     @Column(name = "status")
     private String status;
 
-    public Portao(Integer numeroPortao, String apelido, String status) {
-        this.numeroPortao = numeroPortao;
-        this.apelido = apelido;
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Portao{" +
-                "idPortao=" + idPortao +
-                ", numeroPortao=" + numeroPortao +
-                ", apelido='" + apelido + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

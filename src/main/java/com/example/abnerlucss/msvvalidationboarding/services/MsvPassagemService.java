@@ -13,5 +13,5 @@ import java.util.List;
 public interface MsvPassagemService {
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
-    List<PassagemDTO> cadastrarVoos(@RequestBody VooDTO vooDTO);
+    List<PassagemDTO> cadastrarPassagens(@RequestBody VooDTO vooDTO);
 }

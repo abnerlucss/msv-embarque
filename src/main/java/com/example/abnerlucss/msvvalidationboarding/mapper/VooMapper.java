@@ -8,19 +8,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class VooMapper {
 
-    public Voo converteDTOParaEntidade(VooDTO vooDTO, Portao portao){
+    public Voo converteDTOParaEntidade(VooDTO vooDTO){
+//        Portao portao = new Portao();
+//        portao.setIdPortao(vooDTO.getIdPortao());
+
         return new Voo(
+                vooDTO.getIdVoo(),
                 vooDTO.getAeroporto(),
-                vooDTO.getDataEmbarque(),
-                vooDTO.getHoraEmbarque(),
-                vooDTO.getHoraDesembarque(),
+                vooDTO.getDataHoraEmbarque(),
+                vooDTO.getDataHoraDesembarque(),
                 vooDTO.getDestino(),
                 vooDTO.getIdentificadorCompanhia(),
                 vooDTO.getQtdEconomica(),
                 vooDTO.getQtdExecutiva(),
                 vooDTO.getQtdPrimeiraClasse(),
                 vooDTO.getStatus(),
-                portao
+                Portao.builder().idPortao(vooDTO.getIdPortao()).build()
         );
     }
 
@@ -28,9 +31,8 @@ public class VooMapper {
         return new VooDTO(
                 voo.getIdVoo(),
                 voo.getAeroporto(),
-                voo.getDataEmbarque(),
-                voo.getHoraEmbarque(),
-                voo.getHoraDesembarque(),
+                voo.getDataHoraEmbarque(),
+                voo.getDataHoraDesembarque(),
                 voo.getDestino(),
                 voo.getIdentificadorCompanhia(),
                 voo.getQtdEconomica(),

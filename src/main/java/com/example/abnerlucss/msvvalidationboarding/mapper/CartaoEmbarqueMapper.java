@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class CartaoEmbarqueMapper {
     public CartaoEmbarqueDTO gerarCartaoEmbarque(Embarque embarque) {
         return new CartaoEmbarqueDTO(
-                embarque.getHoraEmbarque(),
+                embarque.getDataHoraEmbarque(),
                 embarque.getClasse(),
                 embarque.getIdentificadorComp(),
                 embarque.getNumeroAssento(),

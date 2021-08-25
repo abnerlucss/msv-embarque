@@ -22,7 +22,7 @@ public class EmbarqueService {
     private VooRepository vooRepository;
 
     public boolean cadastrarEmbarque(EmbarqueDTO body) {
-        Optional<Voo> voo = vooRepository.findByParams(body.getDataEmbarque(), body.getHoraEmbarque(), body.getIdentificadorComp(), body.getDestino());
+        Optional<Voo> voo = vooRepository.findByParams(body.getDataHoraEmbarque(),body.getIdentificadorComp(), body.getDestino());
 
         embarqueRepository.save(embarqueMapper.converteDTOParaEntidade(body, voo.get()));
         return true;

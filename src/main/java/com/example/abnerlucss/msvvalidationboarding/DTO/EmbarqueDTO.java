@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -14,9 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class EmbarqueDTO {
 
-    private Date dataEmbarque;
-
-    private Date horaEmbarque;
+    private LocalDateTime dataHoraEmbarque;
 
     private String classe;
 

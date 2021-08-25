@@ -2,17 +2,25 @@ package com.example.abnerlucss.msvvalidationboarding.services;
 
 import com.example.abnerlucss.msvvalidationboarding.DTO.VooDTO;
 import com.example.abnerlucss.msvvalidationboarding.mapper.VooMapper;
-import com.example.abnerlucss.msvvalidationboarding.models.Portao;
+import com.example.abnerlucss.msvvalidationboarding.models.Voo;
 import com.example.abnerlucss.msvvalidationboarding.repositories.PortaoRepository;
 import com.example.abnerlucss.msvvalidationboarding.repositories.VooRepository;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @RequiredArgsConstructor
 @Service
+@SuppressWarnings("unused")
 public class VooService {
+
+    boolean conflitoHorario = false;
 
     @Autowired
     private VooRepository vooRepository;
@@ -26,16 +34,57 @@ public class VooService {
     @Autowired
     private MsvPassagemService msvPassagemService;
 
-    public VooDTO cadastrarVoo(VooDTO body) {
+    public VooDTO cadastrarVoo(VooDTO body) throws NotFoundException {
 
-        Portao portao = portaoRepository.findById(body.getIdPortao()).orElse(null);
+        LocalDateTime horaInicialEmbarque = body.getDataHoraEmbarque();
+        LocalDateTime horaFinalEmbarque = body.getDataHoraEmbarque().plusMinutes(90);
 
-        msvPassagemService.cadastrarVoos(body);
+        validarPortao(body);
 
+        LocalDate dataEmbarque = body.getDataHoraEmbarque().toLocalDate();
 
-        return vooMapper.converteEntidadeParaDTO(vooRepository.save(vooMapper.converteDTOParaEntidade(body, portao)));
+        List<Voo> vooLista = vooRepository.buscarVooPorDiaPortao(dataEmbarque, body.getIdPortao());
 
+        System.out.println(dataEmbarque);
 
+        System.out.println(vooLista);
+
+        if (!vooLista.isEmpty()) {
+
+            vooLista.stream().forEach(voo -> {
+
+                LocalDateTime vHoraInicialEmbarque = voo.getDataHoraEmbarque();
+                LocalDateTime vHoraFinalEmbarque = vHoraInicialEmbarque.plusMinutes(90);
+
+                if (!horaInicialEmbarque.isBefore(vHoraInicialEmbarque) && !horaInicialEmbarque.isAfter(vHoraFinalEmbarque)) {
+                    conflitoHorario = true;
+                }
+
+                if (!horaFinalEmbarque.isBefore(vHoraInicialEmbarque) && !horaFinalEmbarque.isAfter(vHoraFinalEmbarque)) {
+                    conflitoHorario = true;
+                }
+
+            });
+        }
+
+        if (conflitoHorario) {
+            System.out.println("O portão está ocupado nesse horário");
+            return null;
+        } else {
+            msvPassagemService.cadastrarPassagens(body);
+
+            Voo voo = vooMapper.converteDTOParaEntidade(body);
+
+            Voo save = vooRepository.save(voo);
+
+            return vooMapper.converteEntidadeParaDTO(save);
+        }
+    }
+
+    private void validarPortao(VooDTO body) throws NotFoundException {
+        if(!portaoRepository.findById(body.getIdPortao()).isPresent()){
+            throw new NotFoundException("Portão não encontrado");
+        }
     }
 
 }

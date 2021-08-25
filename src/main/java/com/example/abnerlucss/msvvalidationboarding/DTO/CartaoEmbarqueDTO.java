@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,8 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class CartaoEmbarqueDTO {
 
-    @JsonFormat(pattern = "HH:mm:ss", timezone = "America/Sao_Paulo")
-    private Date horaEmbarque;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Sao_Paulo")
+    private LocalDateTime dataHoraEmbarque;
 
     private String classe;
 
@@ -24,6 +24,7 @@ public class CartaoEmbarqueDTO {
     private Integer numeroAssento;
 
     private Integer numeroPortao;
+
 
     private String destino;
 }
