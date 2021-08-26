@@ -1,4 +1,4 @@
-package com.example.abnerlucss.msvembarque.services;
+package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.PassagemDTO;
 import com.example.abnerlucss.msvembarque.DTO.VooDTO;

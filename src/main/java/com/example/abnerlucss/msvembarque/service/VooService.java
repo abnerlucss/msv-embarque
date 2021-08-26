@@ -1,10 +1,10 @@
-package com.example.abnerlucss.msvembarque.services;
+package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.VooDTO;
 import com.example.abnerlucss.msvembarque.mapper.VooMapper;
-import com.example.abnerlucss.msvembarque.models.Voo;
-import com.example.abnerlucss.msvembarque.repositories.PortaoRepository;
-import com.example.abnerlucss.msvembarque.repositories.VooRepository;
+import com.example.abnerlucss.msvembarque.model.Voo;
+import com.example.abnerlucss.msvembarque.repository.PortaoRepository;
+import com.example.abnerlucss.msvembarque.repository.VooRepository;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

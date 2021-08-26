@@ -1,8 +1,8 @@
 package com.example.abnerlucss.msvembarque.mapper;
 
 import com.example.abnerlucss.msvembarque.DTO.EmbarqueDTO;
-import com.example.abnerlucss.msvembarque.models.Embarque;
-import com.example.abnerlucss.msvembarque.models.Voo;
+import com.example.abnerlucss.msvembarque.model.Embarque;
+import com.example.abnerlucss.msvembarque.model.Voo;
 import org.springframework.stereotype.Component;
 
 @Component

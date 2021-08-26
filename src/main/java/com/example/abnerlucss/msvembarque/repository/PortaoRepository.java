@@ -1,6 +1,6 @@
-package com.example.abnerlucss.msvembarque.repositories;
+package com.example.abnerlucss.msvembarque.repository;
 
-import com.example.abnerlucss.msvembarque.models.Portao;
+import com.example.abnerlucss.msvembarque.model.Portao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

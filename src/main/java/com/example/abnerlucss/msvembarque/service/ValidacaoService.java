@@ -1,12 +1,12 @@
-package com.example.abnerlucss.msvembarque.services;
+package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.CartaoEmbarqueDTO;
 import com.example.abnerlucss.msvembarque.DTO.PassagemCompradaDTO;
 import com.example.abnerlucss.msvembarque.mapper.CartaoEmbarqueMapper;
 import com.example.abnerlucss.msvembarque.mapper.PassagemCompradaMapper;
-import com.example.abnerlucss.msvembarque.models.Embarque;
-import com.example.abnerlucss.msvembarque.repositories.EmbarqueRepository;
-import com.example.abnerlucss.msvembarque.repositories.PassagemCompradaRepository;
+import com.example.abnerlucss.msvembarque.model.Embarque;
+import com.example.abnerlucss.msvembarque.repository.EmbarqueRepository;
+import com.example.abnerlucss.msvembarque.repository.PassagemCompradaRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

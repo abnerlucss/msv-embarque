@@ -1,7 +1,7 @@
 package com.example.abnerlucss.msvembarque.mapper;
 
 import com.example.abnerlucss.msvembarque.DTO.PortaoDTO;
-import com.example.abnerlucss.msvembarque.models.Portao;
+import com.example.abnerlucss.msvembarque.model.Portao;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

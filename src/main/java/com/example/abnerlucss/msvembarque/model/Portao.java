@@ -1,4 +1,4 @@
-package com.example.abnerlucss.msvembarque.models;
+package com.example.abnerlucss.msvembarque.model;
 
 import lombok.*;
 

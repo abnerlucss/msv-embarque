@@ -1,6 +1,6 @@
-package com.example.abnerlucss.msvembarque.repositories;
+package com.example.abnerlucss.msvembarque.repository;
 
-import com.example.abnerlucss.msvembarque.models.Embarque;
+import com.example.abnerlucss.msvembarque.model.Embarque;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

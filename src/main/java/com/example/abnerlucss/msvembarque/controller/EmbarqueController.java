@@ -1,7 +1,8 @@
-package com.example.abnerlucss.msvembarque.controllers;
+package com.example.abnerlucss.msvembarque.controller;
 
 import com.example.abnerlucss.msvembarque.DTO.EmbarqueDTO;
-import com.example.abnerlucss.msvembarque.services.EmbarqueService;
+import com.example.abnerlucss.msvembarque.exception.CreateException;
+import com.example.abnerlucss.msvembarque.service.EmbarqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class EmbarqueController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean cadastrarEmbarque(@RequestBody EmbarqueDTO body){
+    public boolean cadastrarEmbarque(@RequestBody EmbarqueDTO body) throws CreateException {
         return embarqueService.cadastrarEmbarque(body);
     }
 }

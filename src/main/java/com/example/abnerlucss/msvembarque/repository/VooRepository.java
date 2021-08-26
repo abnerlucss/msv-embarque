@@ -1,6 +1,6 @@
-package com.example.abnerlucss.msvembarque.repositories;
+package com.example.abnerlucss.msvembarque.repository;
 
-import com.example.abnerlucss.msvembarque.models.Voo;
+import com.example.abnerlucss.msvembarque.model.Voo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

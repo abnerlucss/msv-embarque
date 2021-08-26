@@ -1,7 +1,7 @@
-package com.example.abnerlucss.msvembarque.controllers;
+package com.example.abnerlucss.msvembarque.controller;
 
 import com.example.abnerlucss.msvembarque.DTO.VooDTO;
-import com.example.abnerlucss.msvembarque.services.VooService;
+import com.example.abnerlucss.msvembarque.service.VooService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
