@@ -15,7 +15,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(CreateException.class)
     public ResponseEntity<ErrorObject> createError(CreateException e) {
-        ErrorObject errorObject = new ErrorObject(LocalDateTime.now(), e.getMessage(), e.getCause().toString());
+        ErrorObject errorObject = new ErrorObject(LocalDateTime.now(), e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorObject);
     }
 

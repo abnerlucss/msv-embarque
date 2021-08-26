@@ -81,9 +81,12 @@ public class VooService {
         }
     }
 
-    private void validarPortao(VooDTO body) throws NotFoundException {
+    private void validarPortao(VooDTO body) throws NotFoundException, CreateException {
         if (!portaoRepository.findById(body.getIdPortao()).isPresent()) {
             throw new NotFoundException("Portão não encontrado");
+        }
+        if(portaoRepository.findById(body.getIdPortao()).get().getStatus().equals("inativo")){
+            throw new CreateException("Portão inativo");
         }
     }
 
