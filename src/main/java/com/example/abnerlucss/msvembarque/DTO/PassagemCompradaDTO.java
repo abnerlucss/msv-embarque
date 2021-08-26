@@ -17,5 +17,4 @@ public class PassagemCompradaDTO {
 
     private String codigoLocalizador;
 
-
 }

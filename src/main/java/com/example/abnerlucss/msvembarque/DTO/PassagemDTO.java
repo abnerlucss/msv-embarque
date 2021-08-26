@@ -29,6 +29,5 @@ public class PassagemDTO {
     private String nomeClasse;
 
     private String nomeCompanhia;
-
-
+    
 }

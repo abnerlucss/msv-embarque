@@ -2,18 +2,19 @@ package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.CartaoEmbarqueDTO;
 import com.example.abnerlucss.msvembarque.DTO.PassagemCompradaDTO;
+import com.example.abnerlucss.msvembarque.exception.NotFoundException;
 import com.example.abnerlucss.msvembarque.mapper.CartaoEmbarqueMapper;
 import com.example.abnerlucss.msvembarque.mapper.PassagemCompradaMapper;
 import com.example.abnerlucss.msvembarque.model.Embarque;
 import com.example.abnerlucss.msvembarque.repository.EmbarqueRepository;
 import com.example.abnerlucss.msvembarque.repository.PassagemCompradaRepository;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@SuppressWarnings("unused")
 public class ValidacaoService {
     @Autowired
     private PassagemCompradaRepository passagemCompradaRepository;
@@ -33,9 +34,8 @@ public class ValidacaoService {
         if (embarque.isPresent()) {
             passagemCompradaRepository.save(passagemCompradaMapper.converteDTOParaEntidade(body, embarque.get()));
             return cartaoEmbarqueMapper.gerarCartaoEmbarque(embarque.get());
-        }
-        else{
-            throw new NotFoundException("codigo localizador não encontrado");
+        } else {
+            throw new NotFoundException("Embarque não encontrado");
         }
     }
 }

@@ -25,6 +25,5 @@ public class CartaoEmbarqueDTO {
 
     private Integer numeroPortao;
 
-
     private String destino;
 }
