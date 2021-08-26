@@ -85,7 +85,7 @@ public class VooService {
         if (!portaoRepository.findById(body.getIdPortao()).isPresent()) {
             throw new NotFoundException("Portão não encontrado");
         }
-        if(portaoRepository.findById(body.getIdPortao()).get().getStatus().equals("inativo")){
+        if (portaoRepository.findById(body.getIdPortao()).get().getStatus().equals("inativo")) {
             throw new CreateException("Portão inativo");
         }
     }
