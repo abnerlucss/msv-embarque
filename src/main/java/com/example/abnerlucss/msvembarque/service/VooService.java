@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -21,7 +21,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class VooService {
 
-    boolean conflitoHorario = false;
+    LocalTime hrInicialEmbarqueCadastrado;
+    LocalTime hrFinalEmbarqueCadastrado;
+
+    boolean conflitoHorario;
 
     @Autowired
     private VooRepository vooRepository;
@@ -36,9 +39,10 @@ public class VooService {
     private MsvPassagemService msvPassagemService;
 
     public VooDTO cadastrarVoo(VooDTO body) throws NotFoundException, CreateException {
+        conflitoHorario = false;
 
-        LocalDateTime horaInicialEmbarque = body.getDataHoraEmbarque();
-        LocalDateTime horaFinalEmbarque = body.getDataHoraEmbarque().plusMinutes(90);
+        LocalTime horaInicialEmbarque = body.getDataHoraEmbarque().toLocalTime();
+        LocalTime horaFinalEmbarque = horaInicialEmbarque.plusMinutes(90);
 
         validarPortao(body);
 
@@ -48,16 +52,15 @@ public class VooService {
 
         if (!vooLista.isEmpty()) {
 
-            vooLista.stream().forEach(voo -> {
+            vooLista.forEach(voo -> {
+                hrInicialEmbarqueCadastrado = voo.getDataHoraEmbarque().toLocalTime();
+                hrFinalEmbarqueCadastrado = hrInicialEmbarqueCadastrado.plusMinutes(90);
 
-                LocalDateTime vHoraInicialEmbarque = voo.getDataHoraEmbarque();
-                LocalDateTime vHoraFinalEmbarque = vHoraInicialEmbarque.plusMinutes(90);
-
-                if (!horaInicialEmbarque.isBefore(vHoraInicialEmbarque) && !horaInicialEmbarque.isAfter(vHoraFinalEmbarque)) {
+                if (!horaInicialEmbarque.isBefore(hrInicialEmbarqueCadastrado) && !horaInicialEmbarque.isAfter(hrFinalEmbarqueCadastrado)) {
                     conflitoHorario = true;
                 }
 
-                if (!horaFinalEmbarque.isBefore(vHoraInicialEmbarque) && !horaFinalEmbarque.isAfter(vHoraFinalEmbarque)) {
+                if (!horaFinalEmbarque.isBefore(hrInicialEmbarqueCadastrado) && !horaFinalEmbarque.isAfter(hrInicialEmbarqueCadastrado)) {
                     conflitoHorario = true;
                 }
 
@@ -66,19 +69,21 @@ public class VooService {
 
         if (conflitoHorario) {
             throw new CreateException("O portão " + body.getIdPortao() + " está indisponível para esse dia e horário");
-        } else {
-            try {
-                msvPassagemService.cadastrarPassagens(body);
-
-                Voo voo = vooMapper.converteDTOParaEntidade(body);
-
-                Voo save = vooRepository.save(voo);
-
-                return vooMapper.converteEntidadeParaDTO(save);
-            } catch (Exception e) {
-                throw new CreateException("Não foi possível cadastrar o voo");
-            }
         }
+
+        try {
+            msvPassagemService.cadastrarPassagens(body);
+
+            Voo voo = vooMapper.converteDTOParaEntidade(body);
+
+            Voo save = vooRepository.save(voo);
+
+            return vooMapper.converteEntidadeParaDTO(save);
+        } catch (Exception e) {
+            throw new CreateException("Não foi possível cadastrar o voo");
+        }
+
+
     }
 
     private void validarPortao(VooDTO body) throws NotFoundException, CreateException {
