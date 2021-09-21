@@ -26,4 +26,10 @@ public class EmbarqueDTO {
 
     private String destino;
 
+    private String partida;
+
+    private String aeroporto;
+
+    private Integer idVoo;
+
 }

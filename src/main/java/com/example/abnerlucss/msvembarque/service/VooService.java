@@ -48,7 +48,7 @@ public class VooService {
 
         LocalDate dataEmbarque = body.getDataHoraEmbarque().toLocalDate();
 
-        List<Voo> vooLista = vooRepository.buscarVooPorDiaPortao(dataEmbarque, body.getIdPortao());
+        List<Voo> vooLista = vooRepository.buscarVooPorDiaPortao(dataEmbarque, body.getIdPortao(), body.getPartida(), body.getAeroporto());
 
         if (!vooLista.isEmpty()) {
 
@@ -72,11 +72,12 @@ public class VooService {
         }
 
         try {
-            msvPassagemService.cadastrarPassagens(body);
-
             Voo voo = vooMapper.converteDTOParaEntidade(body);
 
+
             Voo save = vooRepository.save(voo);
+
+            msvPassagemService.cadastrarPassagens(vooMapper.converteEntidadeParaDTO(save));
 
             return vooMapper.converteEntidadeParaDTO(save);
         } catch (Exception e) {

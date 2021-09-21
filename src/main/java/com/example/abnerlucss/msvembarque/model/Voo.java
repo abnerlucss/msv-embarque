@@ -21,6 +21,9 @@ public class Voo {
     @Column(name = "id_voo")
     private Integer idVoo;
 
+    @Column(name = "partida")
+    private String partida;
+
     @Column(name = "aeroporto")
     private String aeroporto;
 
@@ -47,6 +50,15 @@ public class Voo {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "preco_primeira_classe")
+    private Double precoPrimeiraClasse;
+
+    @Column(name = "preco_executiva")
+    private Double precoExecutiva;
+
+    @Column(name = "preco_economica")
+    private Double precoEconomica;
 
     @ManyToOne
     @JoinColumn(name = "id_portao")
