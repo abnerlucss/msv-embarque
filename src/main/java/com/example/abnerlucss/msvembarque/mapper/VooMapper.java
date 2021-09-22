@@ -5,10 +5,13 @@ import com.example.abnerlucss.msvembarque.model.Portao;
 import com.example.abnerlucss.msvembarque.model.Voo;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class VooMapper {
 
-    public Voo converteDTOParaEntidade(VooDTO vooDTO){
+    public Voo converteDTOParaEntidade(VooDTO vooDTO) {
 
         return new Voo(
                 vooDTO.getIdVoo(),
@@ -29,7 +32,7 @@ public class VooMapper {
         );
     }
 
-    public VooDTO converteEntidadeParaDTO(Voo voo){
+    public VooDTO converteEntidadeParaDTO(Voo voo) {
         return new VooDTO(
                 voo.getIdVoo(),
                 voo.getPartida(),
@@ -47,6 +50,27 @@ public class VooMapper {
                 voo.getPrecoEconomica(),
                 voo.getPortao().getIdPortao()
         );
+    }
+
+    public List<VooDTO> converteListaEntidadeParaDTO(List<Voo> vooLista) {
+        return vooLista.stream().map(voo -> VooDTO.builder()
+                .idVoo(voo.getIdVoo())
+                .aeroporto(voo.getAeroporto())
+                .dataHoraEmbarque(voo.getDataHoraEmbarque())
+                .dataHoraDesembarque(voo.getDataHoraDesembarque())
+                .destino(voo.getDestino())
+                .identificadorCompanhia(voo.getIdentificadorCompanhia())
+                .qtdEconomica(voo.getQtdEconomica())
+                .qtdExecutiva(voo.getQtdExecutiva())
+                .qtdPrimeiraClasse(voo.getQtdPrimeiraClasse())
+                .status(voo.getStatus())
+                .idPortao(voo.getPortao().getIdPortao())
+                .precoPrimeiraClasse(voo.getPrecoPrimeiraClasse())
+                .precoExecutiva(voo.getPrecoExecutiva())
+                .precoEconomica(voo.getPrecoEconomica())
+                .partida(voo.getPartida())
+                .build()
+        ).collect(Collectors.toList());
     }
 
 }

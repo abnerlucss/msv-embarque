@@ -2,6 +2,7 @@ package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.VooDTO;
 import com.example.abnerlucss.msvembarque.exception.CreateException;
+import com.example.abnerlucss.msvembarque.exception.ListException;
 import com.example.abnerlucss.msvembarque.exception.NotFoundException;
 import com.example.abnerlucss.msvembarque.mapper.VooMapper;
 import com.example.abnerlucss.msvembarque.model.Voo;
@@ -96,4 +97,17 @@ public class VooService {
         }
     }
 
+    public List<VooDTO> listarVoos() throws ListException {
+        try {
+            return vooMapper.converteListaEntidadeParaDTO(vooRepository.findAll());
+        } catch (Exception e) {
+            throw new ListException("Erro ao listar voos");
+        }
+    }
+
+    public VooDTO buscarVooPorId(Integer idVoo) throws NotFoundException {
+        return vooMapper.converteEntidadeParaDTO(vooRepository.findById(idVoo).orElseThrow(
+                () -> new NotFoundException("Voo não encontrado")
+        ));
+    }
 }

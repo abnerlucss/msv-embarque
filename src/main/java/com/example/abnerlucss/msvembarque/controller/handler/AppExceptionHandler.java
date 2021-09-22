@@ -37,4 +37,9 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorObject);
     }
 
+    @ExceptionHandler(ListException.class)
+    public ResponseEntity<ErrorObject> listError(ListException e) {
+        ErrorObject errorObject = new ErrorObject(LocalDateTime.now(), e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorObject);
+    }
 }
