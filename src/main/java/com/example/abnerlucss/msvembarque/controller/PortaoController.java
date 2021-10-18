@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @SuppressWarnings("unused")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/portao")
 public class PortaoController {
@@ -50,7 +51,6 @@ public class PortaoController {
         return portaoService.listarPortoesDisponiveis();
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/inativos")
     @ResponseStatus(HttpStatus.OK)
     public List<PortaoDTO> listarPortoesIndisponiveis(){
