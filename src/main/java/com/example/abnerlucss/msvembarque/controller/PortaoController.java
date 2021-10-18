@@ -50,6 +50,7 @@ public class PortaoController {
         return portaoService.listarPortoesDisponiveis();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/inativos")
     @ResponseStatus(HttpStatus.OK)
     public List<PortaoDTO> listarPortoesIndisponiveis(){
