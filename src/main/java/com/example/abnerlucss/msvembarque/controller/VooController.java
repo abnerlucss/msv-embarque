@@ -13,6 +13,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("v1/voo")
 public class VooController {
     @Autowired
