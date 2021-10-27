@@ -1,9 +1,6 @@
 package com.example.abnerlucss.msvembarque.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +9,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class EmbarqueDTO {
+
+    private Integer idEmbarque;
 
     private LocalDateTime dataHoraEmbarque;
 

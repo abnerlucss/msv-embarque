@@ -9,6 +9,7 @@ import com.example.abnerlucss.msvembarque.repository.VooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,4 +37,7 @@ public class EmbarqueService {
         }
     }
 
+    public List<EmbarqueDTO> listarEmbarques() {
+        return embarqueMapper.converteListaEntidadeParaDTO(embarqueRepository.findAll());
+    }
 }
