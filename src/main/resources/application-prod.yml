@@ -9,4 +9,4 @@ spring:
     password: 06eadb823a52b950c0b55568b4b071a26bd71c902cd0317b79de51f5c778246d
 
 server:
-  port: 8081
+  port: ${PORT:80}
