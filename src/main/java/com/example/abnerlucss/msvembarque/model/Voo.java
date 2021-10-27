@@ -64,4 +64,24 @@ public class Voo {
     @JoinColumn(name = "id_portao")
     private Portao portao;
 
+    @Override
+    public String toString() {
+        return "Voo{" +
+                "idVoo=" + idVoo +
+                ", partida='" + partida + '\'' +
+                ", aeroporto='" + aeroporto + '\'' +
+                ", dataHoraEmbarque=" + dataHoraEmbarque +
+                ", dataHoraDesembarque=" + dataHoraDesembarque +
+                ", destino='" + destino + '\'' +
+                ", identificadorCompanhia='" + identificadorCompanhia + '\'' +
+                ", qtdEconomica=" + qtdEconomica +
+                ", qtdExecutiva=" + qtdExecutiva +
+                ", qtdPrimeiraClasse=" + qtdPrimeiraClasse +
+                ", status='" + status + '\'' +
+                ", precoPrimeiraClasse=" + precoPrimeiraClasse +
+                ", precoExecutiva=" + precoExecutiva +
+                ", precoEconomica=" + precoEconomica +
+                ", portao=" + portao +
+                '}';
+    }
 }
