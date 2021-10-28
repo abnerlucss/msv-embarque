@@ -1,6 +1,7 @@
 package com.example.abnerlucss.msvembarque.controller;
 
 import com.example.abnerlucss.msvembarque.DTO.EmbarqueDTO;
+import com.example.abnerlucss.msvembarque.DTO.MediaEmbarquesDTO;
 import com.example.abnerlucss.msvembarque.exception.CreateException;
 import com.example.abnerlucss.msvembarque.exception.ListException;
 import com.example.abnerlucss.msvembarque.service.EmbarqueService;
@@ -26,7 +27,13 @@ public class EmbarqueController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EmbarqueDTO> listarEmbarques() throws ListException {
+    public List<EmbarqueDTO> listarEmbarques(){
         return embarqueService.listarEmbarques();
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public MediaEmbarquesDTO mediaEmbarquesSemanais(){
+        return embarqueService.mediaEmbarquesSemanais();
     }
 }

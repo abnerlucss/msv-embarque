@@ -1,6 +1,7 @@
 package com.example.abnerlucss.msvembarque.service;
 
 import com.example.abnerlucss.msvembarque.DTO.EmbarqueDTO;
+import com.example.abnerlucss.msvembarque.DTO.MediaEmbarquesDTO;
 import com.example.abnerlucss.msvembarque.exception.CreateException;
 import com.example.abnerlucss.msvembarque.mapper.EmbarqueMapper;
 import com.example.abnerlucss.msvembarque.model.Voo;
@@ -39,5 +40,17 @@ public class EmbarqueService {
 
     public List<EmbarqueDTO> listarEmbarques() {
         return embarqueMapper.converteListaEntidadeParaDTO(embarqueRepository.findAll());
+    }
+
+    public MediaEmbarquesDTO mediaEmbarquesSemanais(){
+        return new MediaEmbarquesDTO(
+                1765,
+                1432,
+                1235,
+                1653,
+                1809,
+                1976,
+                1704
+        );
     }
 }
