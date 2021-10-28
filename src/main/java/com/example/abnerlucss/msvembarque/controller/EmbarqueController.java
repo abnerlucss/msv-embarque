@@ -31,7 +31,7 @@ public class EmbarqueController {
         return embarqueService.listarEmbarques();
     }
 
-    @GetMapping
+    @GetMapping("embarques/semanais")
     @ResponseStatus(HttpStatus.OK)
     public MediaEmbarquesDTO mediaEmbarquesSemanais(){
         return embarqueService.mediaEmbarquesSemanais();
