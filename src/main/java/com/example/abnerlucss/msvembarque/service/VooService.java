@@ -110,4 +110,8 @@ public class VooService {
                 () -> new NotFoundException("Voo não encontrado")
         ));
     }
+
+    public Integer voosPrevistosParaHoje() {
+        return vooRepository.voosPrevistosParaHoje();
+    }
 }

@@ -53,4 +53,8 @@ public class EmbarqueService {
                 1704
         );
     }
+
+    public Integer embarquePrevistosParaHoje(){
+        return embarqueRepository.embarquePrevistosParaHoje();
+    }
 }

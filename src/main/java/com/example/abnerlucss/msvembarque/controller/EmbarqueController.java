@@ -36,4 +36,10 @@ public class EmbarqueController {
     public MediaEmbarquesDTO mediaEmbarquesSemanais(){
         return embarqueService.mediaEmbarquesSemanais();
     }
+
+    @GetMapping("embarques/hoje")
+    @ResponseStatus(HttpStatus.OK)
+    public Integer embarquePrevistosParaHoje(){
+        return embarqueService.embarquePrevistosParaHoje();
+    }
 }

@@ -36,4 +36,10 @@ public class VooController {
     public VooDTO buscarVooPorId(@PathVariable Integer idVoo) throws NotFoundException {
         return vooService.buscarVooPorId(idVoo);
     }
+
+    @GetMapping("voos/hoje")
+    @ResponseStatus(HttpStatus.OK)
+    public Integer embarquePrevistosParaHoje(){
+        return vooService.voosPrevistosParaHoje();
+    }
 }
