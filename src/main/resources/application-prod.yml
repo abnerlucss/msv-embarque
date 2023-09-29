@@ -2,11 +2,11 @@ spring:
   profiles: prod
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
   datasource:
-    url: jdbc:postgresql://dpg-cka3adldrqvc73at6mpg-a.oregon-postgres.render.com:5432/developmentdb_rsm5
-    username: abnerlucas
-    password: ZCd7HiL6KQrSQklr3e35NerzGNxb2u4a
+    url: jdbc:postgresql://containers-us-west-139.railway.app:6594/railway
+    username: postgres
+    password: HcPILu6rrprTnotoRg8i
 
 server:
   port: 8080
