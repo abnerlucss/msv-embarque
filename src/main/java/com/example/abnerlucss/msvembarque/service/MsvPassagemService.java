@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-@FeignClient(name = "embarque", url = "https://msv-passagem.herokuapp.com/v1/passagem")
+@FeignClient(name = "embarque", url = "https://msv-passagem-production.up.railway.app/v1/passagem")
 public interface MsvPassagemService {
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
