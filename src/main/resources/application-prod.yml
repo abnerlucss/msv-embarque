@@ -9,4 +9,4 @@ spring:
     password: ${PROD_DB_PASSWORD}
 
 server:
-  port: ${PORT::3000}
+  port: ${PORT:3000}
